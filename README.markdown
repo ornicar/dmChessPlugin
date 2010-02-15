@@ -12,4 +12,4 @@ Heavily unit tested ( currently 427 unit tests )
 
 Will only work with Diem 5.0 installed. This plugin uses dependency injection service container and is fully extensible. Please send a request if you want to help improve or translate it.
 
-Documentation: http://diem-project.org/plugins/dmchessplugin
+View documentation online: [Diem Chess plugin documentation](http://diem-project.org/plugins/dmchessplugin)
