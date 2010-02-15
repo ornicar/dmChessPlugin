@@ -1,0 +1,13 @@
+js:
+
+  dmChessPlugin:
+  
+    ctrl:             ctrl
+    game:             game
+
+css:
+
+  dmChessPlugin:
+  
+    board:            board
+    table:            table

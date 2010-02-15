@@ -1,0 +1,113 @@
+div.dm_chess_board_wrap {
+	float: left;
+  border: 1px solid #D3D3D3;
+  width: 512px;
+  height: 512px;
+  margin-right: 15px;
+}
+
+div.dm_chess_board {
+  width: 512px;
+  height: 512px;
+  position: relative;
+}
+
+div.dm_chess_square {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+}
+
+div.dm_chess_square.white {
+  background: #FFFFFF;
+}
+div.dm_chess_square.black {
+  background: #CFCFCF;
+}
+
+div.dm_chess_square_inner {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+}
+div.dm_chess_square.moved div.dm_chess_square_inner {
+  background: url(../images/over5.png) top left no-repeat;
+}
+div.dm_chess_square.check div.dm_chess_square_inner {
+  background: url(../images/over6.png) top left no-repeat;
+}
+div.my_turn div.dm_chess_square:hover div.dm_chess_square_inner {
+  background: url(../images/over.png) top left no-repeat;
+}
+div.dm_chess_square.droppable-active div.dm_chess_square_inner {
+  background: url(../images/over4.png) top left no-repeat;
+}
+div.dm_chess_square.droppable-hover div.dm_chess_square_inner {
+  background: url(../images/over3.png) top left no-repeat;
+}
+
+div.dm_chess_square span.human_pos {
+	position: absolute;
+  margin: 0 0 0 2px;
+  font-size: 10px;
+}
+div.dm_chess_square.white span.human_pos {
+  color: #ccc;
+}
+div.dm_chess_square.black span.human_pos {
+  color: #fff;
+}
+
+div.dm_chess_piece {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  background-image: url(../images/piece/sprite.png);
+}
+
+.my_turn div.dm_chess_piece.ui-draggable {
+  cursor: move;
+}
+
+div.dm_chess_piece.ui-draggable-dragging,
+div.dm_chess_piece.moving {
+	opacity: 0.5;
+}
+
+div.dm_chess_piece.pawn.white{
+  background-position: +0px +0px;
+}
+div.dm_chess_piece.bishop.white{
+  background-position: -64px +0px;
+}
+div.dm_chess_piece.knight.white{
+  background-position: -128px +0px;
+}
+div.dm_chess_piece.rook.white{
+  background-position: -192px +0px;
+}
+div.dm_chess_piece.queen.white{
+  background-position: -256px +0px;
+}
+div.dm_chess_piece.king.white{
+  background-position: -320px +0px;
+}
+
+div.dm_chess_piece.pawn.black{
+  background-position: +0px +64px;
+}
+div.dm_chess_piece.bishop.black{
+  background-position: -64px +64px;
+}
+div.dm_chess_piece.knight.black{
+  background-position: -128px +64px;
+}
+div.dm_chess_piece.rook.black{
+  background-position: -192px +64px;
+}
+div.dm_chess_piece.queen.black{
+  background-position: -256px +64px;
+}
+div.dm_chess_piece.king.black{
+  background-position: -320px +64px;
+}

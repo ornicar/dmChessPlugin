@@ -1,0 +1,96 @@
+DmChessGame:
+  actAs:
+    Timestampable:
+  columns:
+    code:             { type: string(8), notnull: true, unique: true }
+    is_started:       { type: boolean, notnull: true, default: false }
+    is_finished:      { type: boolean, notnull: true, default: false }
+    turns:            { type: integer(2), notnull: true, default: 0 }
+    
+DmChessPlayer:
+  columns:
+    code:             { type: string(8), notnull: true, unique: true }
+    is_creator:       { type: boolean, notnull: true, default: false }
+    is_winner:        { type: boolean, notnull: true, default: false }
+    is_ai:            { type: boolean, notnull: true, default: false }
+    ai_level:         { type: integer(1) }
+    game_id:          { type: integer, notnull: true }
+    color:            { type: enum, notnull: true, values: [white, black] }
+    events:           { type: string(255) }
+  relations:
+    Game:
+      local:          game_id
+      class:          DmChessGame
+      foreignAlias:   Players
+      onDelete:       CASCADE
+    
+DmChessPiece:
+  options:
+    symfony:          { form: false, filter: false }
+  columns:
+    player_id:        { type: integer, notnull: true }
+    type:             { type: enum, notnull: true, values: [king, queen, rook, knight, bishop, pawn] }
+    x:                { type: integer(1) }
+    y:                { type: integer(1) }
+    is_dead:          { type: integer(2), notnull: true, default: 0 }
+    first_move:       { type: integer(2), notnull: true, default: -1 }
+  relations:
+    Player:
+      local:          player_id
+      class:          DmChessPlayer
+      foreignAlias:   Pieces
+      onDelete:       CASCADE
+
+DmChessKing:
+  options:
+    symfony:          { form: false, filter: false }
+  inheritance:
+    type:             column_aggregation
+    extends:          DmChessPiece
+    keyField:         type
+    keyValue:         king
+
+DmChessQueen:
+  options:
+    symfony:          { form: false, filter: false }
+  inheritance:
+    type:             column_aggregation
+    extends:          DmChessPiece
+    keyField:         type
+    keyValue:         queen
+
+DmChessRook:
+  options:
+    symfony:          { form: false, filter: false }
+  inheritance:
+    type:             column_aggregation
+    extends:          DmChessPiece
+    keyField:         type
+    keyValue:         rook
+
+DmChessKnight:
+  options:
+    symfony:          { form: false, filter: false }
+  inheritance:
+    type:             column_aggregation
+    extends:          DmChessPiece
+    keyField:         type
+    keyValue:         knight
+
+DmChessBishop:
+  options:
+    symfony:          { form: false, filter: false }
+  inheritance:
+    type:             column_aggregation
+    extends:          DmChessPiece
+    keyField:         type
+    keyValue:         bishop
+
+DmChessPawn:
+  options:
+    symfony:          { form: false, filter: false }
+  inheritance:
+    type:             column_aggregation
+    extends:          DmChessPiece
+    keyField:         type
+    keyValue:         pawn

@@ -1,0 +1,100 @@
+div.dm_chess_opponent {
+  color: #888;
+}
+
+div.dm_chess_table {
+	height: 216px;
+  overflow: hidden;
+  background: #F8F8F8;
+  padding: 10px;
+  border: 1px solid #D4D4D4;
+  font: 12px 'Lucida Grande','Lucida Sans Unicode',Geneva,Verdana,Sans-Serif;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+div.dm_chess_join_url {
+	background: #FFFFFF;
+	border: 1px solid #D4D4D4;
+	margin: 24px 0;
+	padding: 10px;
+}
+
+div.dm_chess_separator {
+	border-bottom: 1px solid #D4D4D4;
+  margin: 10px 0;
+}
+
+div.dm_chess_permalink a.link {
+	white-space: nowrap;
+	display: block;
+}
+
+div.dm_chess_give_up {
+	margin-top: 20px;
+  text-align: right;
+}
+div.dm_chess_give_up a.link {
+  color: #888;
+  font-size: 90%;
+}
+
+div.dm_chess_current_player {
+  height: 64px;
+}
+div.dm_chess_current_player div.player {
+  position: absolute;
+  display: none;
+}
+div.dm_chess_current_player div.player div.piece {
+  top: 0;
+  left: 0;
+}
+div.dm_chess_current_player div.player p {
+  height: 64px;
+  line-height: 64px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #444;
+  margin: 0 0 0 64px;
+}
+
+div.dm_chess_table.finished .game_over {
+  font-size: 150%;
+}
+
+div.dm_chess_table.finished div.player {
+  display: block;
+}
+
+div.dm_chess_table.finished .player .dm_chess_piece {
+}
+
+div.dm_chess_cemetery {
+  height: 128px;
+}
+
+div.dm_chess_cemetery_top {
+  margin-bottom: 10px;
+}
+
+div.dm_chess_cemetery_bottom {
+  margin-top: 10px;
+}
+
+div.dm_chess_cemetery li {
+	display: block;
+  list-style: none;
+  float: left;
+  margin-right: -24px;
+  width: 64px;
+  height: 64px;
+}
+div.dm_chess_cemetery div.dm_chess_piece {
+  opacity: 0.5;
+  position: inherit;
+}
+
+div.dm_chess_not_created .yescript {
+  display: none;
+}

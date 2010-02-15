@@ -1,0 +1,13 @@
+Project:
+
+  Chess:
+  
+    dmChessGame:
+      name:         Chess Game
+      actions:
+        play:
+  
+    dmChessPlayer:
+      parent:       dmChessGame
+      name:         Chess Player
+      front:        false

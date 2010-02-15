@@ -1,0 +1,55 @@
+generator:
+  class: dmAdminDoctrineGenerator
+  param:
+    model_class: DmChessPlayer
+    theme: dmAdmin
+    non_verbose_templates: true
+    with_show: false
+    route_prefix: dm_chess_player
+    with_doctrine_route: false
+    config:
+      actions: ~
+      fields:
+        is_creator:
+          label: Creator
+        is_winner:
+          label: Winner
+        is_ai:
+          label: Ai
+      list:
+        display:
+          - '=id'
+          - game_id
+          - code
+          - is_creator
+          - is_winner
+          - is_ai
+          - ai_level
+          - color
+          - _events
+        sort:
+          - id
+          - asc
+        table_method: getAdminListQuery
+        table_count_method: ~
+        loremize: false
+      filter:
+        display:
+          - id
+          - is_creator
+          - is_winner
+          - is_ai
+          - code
+          - ai_level
+          - game_id
+          - color
+          - events
+      form:
+        display:
+          NONE: [is_creator, is_winner, is_ai, game_id]
+          Others: [code, ai_level, color, events]
+        class: DmChessPlayerAdminForm
+        fields: {  }
+      edit: ~
+      new: ~
+    sortable: false

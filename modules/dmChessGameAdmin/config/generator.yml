@@ -1,0 +1,50 @@
+generator:
+  class: dmAdminDoctrineGenerator
+  param:
+    model_class: DmChessGame
+    theme: dmAdmin
+    non_verbose_templates: true
+    with_show: false
+    route_prefix: dm_chess_game
+    with_doctrine_route: false
+    config:
+      actions: ~
+      fields:
+        is_started:
+          label: Started
+        is_finished:
+          label: Finished
+      list:
+        display:
+          - '=id'
+          - _players_list
+          - code
+          - is_started
+          - is_finished
+          - turns
+          - created_at
+          - updated_at
+        sort:
+          - created_at
+          - desc
+        table_method: getAdminListQuery
+        table_count_method: ~
+        loremize: false
+      filter:
+        display:
+          - id
+          - is_started
+          - is_finished
+          - code
+          - turns
+          - created_at
+          - updated_at
+      form:
+        display:
+          NONE: [is_started, is_finished]
+          Others: [code, turns]
+        class: DmChessGameAdminForm
+        fields: {  }
+      edit: ~
+      new: ~
+    sortable: false

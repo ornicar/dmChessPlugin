@@ -1,0 +1,102 @@
+parameters:
+
+  dm_chess_board.class:       dmChessBoard
+  dm_chess_board.options:
+    square_class:             dmChessSquare
+
+  dm_chess_event_log.class:   dmChessEventLog
+  
+  dm_chess_asset_loader.class: dmChessAssetLoader
+  
+  dm_chess_javascript_config.class: dmChessJavascriptConfig
+  
+  dm_chess_piece_filter.class: dmChessPieceFilter
+  
+  dm_chess_ai.class:          dmChessAi
+  dm_chess_ai.options:
+    driver:                   web # can be "stupid" or "web" or "crafty"
+    level:                    3
+  
+  dm_chess_ai_driver_stupid.class: dmChessAiDriverStupid
+  
+  dm_chess_ai_driver_web.class: dmChessAiDriverWeb
+  dm_chess_ai_driver_web.options:
+    url:                      http://chess.diem-project.org/+/dmChessAiServer/play
+    level:                    3
+  
+  dm_chess_ai_driver_crafty.class: dmChessAiDriverCrafty
+  dm_chess_ai_driver_crafty.options:
+    level:                    3
+  
+  dm_chess_ai_server.class:   dmChessAiServer
+  dm_chess_ai_server.options:
+    enabled:                  false
+  
+  dm_chess_crafty.class:      dmChessCrafty
+  dm_chess_crafty.options:
+    path:                     /usr/games/crafty
+    level:                    3
+  
+  dm_chess_forsythe.class:    dmChessForsytheNotation
+  
+services:
+
+  dm_chess_board:
+    class:                    %dm_chess_board.class%
+    shared:                   false
+    arguments:                [ %dm_chess.game%, %dm_chess_board.options% ]
+
+  dm_chess_event_log:
+    class:                    %dm_chess_event_log.class%
+    shared:                   true
+    arguments:                [ @dispatcher ]
+
+  dm_chess_asset_loader:
+    class:                    %dm_chess_asset_loader.class%
+    shared:                   false
+    arguments:                [ @response ]
+
+  dm_chess_javascript_config:
+    class:                    %dm_chess_javascript_config.class%
+    shared:                   false
+    arguments:                [ @response, @helper, @i18n, %dm_chess.player% ]
+  
+  dm_chess_piece_filter:
+    class:                    %dm_chess_piece_filter.class%
+    shared:                   true
+    arguments:                [ ]
+    
+  dm_chess_forsythe:
+    class:                    %dm_chess_forsythe.class%
+    shared:                   true
+    arguments:                [ ]
+    
+  dm_chess_ai:
+    class:                    %dm_chess_ai.class%
+    shared:                   false
+    arguments:                [ @service_container, %dm_chess_ai.options% ]
+    
+  dm_chess_ai_driver_stupid:
+    class:                    %dm_chess_ai_driver_stupid.class%
+    shared:                   false
+    arguments:                [ %dm_chess.player% ]
+    
+  dm_chess_ai_driver_crafty:
+    class:                    %dm_chess_ai_driver_crafty.class%
+    shared:                   false
+    arguments:                [ %dm_chess.player%, @service_container, %dm_chess_ai_driver_crafty.options% ]
+    
+  dm_chess_ai_driver_web:
+    class:                    %dm_chess_ai_driver_web.class%
+    shared:                   false
+    arguments:                [ %dm_chess.player%, @service_container, %dm_chess_ai_driver_web.options% ]
+    
+  dm_chess_ai_server:
+    class:                    %dm_chess_ai_server.class%
+    shared:                   false
+    arguments:                [ @service_container, %dm_chess_ai_server.options% ]
+    
+  dm_chess_crafty:
+    class:                    %dm_chess_crafty.class%
+    shared:                   false
+    arguments:                [ @service_container, %dm_chess_crafty.options% ]
