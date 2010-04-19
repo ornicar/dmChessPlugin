@@ -6,14 +6,14 @@
     {
       var self = this;
       self.title_timeout = null;
-			self.pieceMoving = false
-			self.$board = $("div.dm_chess_board", self.element);
+      self.pieceMoving = false
+      self.$board = $("div.dm_chess_board", self.element);
       self.$table = $("div.dm_chess_table", self.element);
       
       self.indicateTurn();
 
       // init squares
-			$("div.dm_chess_square", self.$board).each(function()
+      $("div.dm_chess_square", self.$board).each(function()
       {
         $(this).droppable({
           accept: function(draggable)
@@ -23,7 +23,7 @@
           drop: function(ev, ui)
           {
             var $piece = ui.draggable, $oldSquare = $piece.parent();
-						
+
             $("div.droppable-active", self.$board).removeClass("droppable-active");
             self.options.targets = null;
             self.movePiece($oldSquare.attr("id"), $(this).attr("id"));
@@ -50,44 +50,44 @@
         });
       });
       
-			// init pieces
+      // init pieces
       $("div.dm_chess_piece." + self.options.player.color, self.$board).each(function()
-			{
-				$(this).draggable({
-	        //distance: 10,
-	        containment: self.$board,
-	        helper: function()
-	        {
-	          return $('<div>')
-	          .attr("class", $(this).attr("class"))
-	          .attr("id", "moving_" + $(this).attr("id"))
-	          .appendTo(self.$board);
-	        },
-	        start: function()
-	        {
-	          self.pieceMoving = true;
-	          $(this).addClass("moving").parent().addClass("droppable-active")
-	        },
-	        stop: function()
-	        {
+      {
+        $(this).draggable({
+          //distance: 10,
+          containment: self.$board,
+          helper: function()
+          {
+            return $('<div>')
+            .attr("class", $(this).attr("class"))
+            .attr("id", "moving_" + $(this).attr("id"))
+            .appendTo(self.$board);
+          },
+          start: function()
+          {
+            self.pieceMoving = true;
+            $(this).addClass("moving").parent().addClass("droppable-active")
+          },
+          stop: function()
+          {
             self.pieceMoving = false;
-	          $(this).removeClass("moving").parent().removeClass("droppable-active")
-	        }
-	      })
-	      .hover(function()
-	      {
-	        if (!self.pieceMoving && self.isMyTurn() && (targets = self.options.targets[$(this).attr('id').substr(1)]) && targets.length) 
-	        {
-	          $("#" + targets.join(", #")).addClass("droppable-active");
-	        }
-	      }, function()
-	      {
-	        if (!self.pieceMoving) 
-	        {
-	          $("div.droppable-active", self.$board).removeClass("droppable-active");
-	        }
-	      });
-			});
+            $(this).removeClass("moving").parent().removeClass("droppable-active")
+          }
+        })
+        .hover(function()
+        {
+          if (!self.pieceMoving && self.isMyTurn() && (targets = self.options.targets[$(this).attr('id').substr(1)]) && targets.length)
+          {
+            $("#" + targets.join(", #")).addClass("droppable-active");
+          }
+        }, function()
+        {
+          if (!self.pieceMoving)
+          {
+            $("div.droppable-active", self.$board).removeClass("droppable-active");
+          }
+        });
+      });
       
       self.restartBeat();
       
@@ -95,16 +95,16 @@
       {
         if (confirm($(this).attr('title')+' ?')) 
         {
-		      $.ajax({
-		        dataType: "json",
-		        url: $(this).attr("href"),
-		        success: function(data)
-		        {
-		          self.updateFromJson(data);
-		        }
-		      });
+          $.ajax({
+            dataType: "json",
+            url: $(this).attr("href"),
+            success: function(data)
+            {
+              self.updateFromJson(data);
+            }
+          });
         }
-				
+
         return false;
       });
 
@@ -113,7 +113,7 @@
         $.ajax({
           url:  $.dm.ctrl.getHref('+/dmChessGame/setAiLevel'),
           data: {
-						player: self.options.player.code,
+            player: self.options.player.code,
             level:  $(this).val()
           }
         });
@@ -124,7 +124,7 @@
       var self = this;
       $("div.dm_chess_square.check", self.$board).removeClass("check");
       
-			self.options.targets = data.targets;
+      self.options.targets = data.targets;
       self.displayEvents(data.events);
       self.indicateTurn();
     },
@@ -141,8 +141,8 @@
       if (this.options.game.finished) 
       {
         document.title = this.translate('Game over');
-			}
-			else if (this.isMyTurn()) 
+      }
+      else if (this.isMyTurn())
       {
         this.element.addClass("my_turn");
         document.title = this.translate('Your turn');
@@ -152,12 +152,12 @@
         this.element.removeClass("my_turn");
         document.title = this.translate('Waiting for opponent');
       }
-			
-			if (!this.$table.hasClass('finished')) 
-			{
-				this.$table.find("div.dm_chess_current_player div.player:visible").fadeOut(500);
-				this.$table.find("div.dm_chess_current_player div.player." + (this.isMyTurn() ? this.options.player.color : this.options.opponent.color)).fadeIn(500);
-			}
+
+      if (!this.$table.hasClass('finished'))
+      {
+        this.$table.find("div.dm_chess_current_player div.player:visible").fadeOut(500);
+        this.$table.find("div.dm_chess_current_player div.player." + (this.isMyTurn() ? this.options.player.color : this.options.opponent.color)).fadeIn(500);
+      }
     },
     beat: function()
     {
@@ -173,28 +173,28 @@
         },
         success: function(data)
         {
-					if (data) 
-					{
-						self.updateFromJson(data);
-					}
-					self.restartBeat();
+          if (data)
+          {
+            self.updateFromJson(data);
+          }
+          self.restartBeat();
         }
       });
     },
     movePiece: function(from, to)
     {
-			var $piece = $("div#"+from+" div.dm_chess_piece", this.$board);
-			
+      var $piece = $("div#"+from+" div.dm_chess_piece", this.$board);
+
       if (!$piece.length)
       {
         // already moved
         return;
       }
-			
+
       var self = this;
       $("div.dm_chess_square.moved", self.$board).removeClass("moved");
-			var $from = $("div#" + from, self.$board).addClass("moved"), from_offset = $from.offset();
-			var $to = $("div#" + to, self.$board).addClass("moved"), to_offset = $to.offset();
+      var $from = $("div#" + from, self.$board).addClass("moved"), from_offset = $from.offset();
+      var $to = $("div#" + to, self.$board).addClass("moved"), to_offset = $to.offset();
       var animation = $piece.hasClass(self.options.player.color) ? 500 : 1000;
       
       $("body").append($piece.css({
@@ -259,8 +259,8 @@
         var event = events[i];
         switch (event.action)
         {
-					case "piece_move":
-					  self.movePiece(event.from, event.to);
+          case "piece_move":
+            self.movePiece(event.from, event.to);
             break;
           case "pawn_promotion":
             $("div#p"+event.old_piece).attr('id', 'p'+event.new_piece);
@@ -280,16 +280,16 @@
             $("div#" + event.square, self.$board).addClass("check");
             break;
           case "mate":
-				  case "resign":
-					  self.options.game.finished = true;
+          case "resign":
+            self.options.game.finished = true;
             document.title = self.translate('Game over');
-						$.ajax({
-							url: $.dm.ctrl.getHref('+/dmChessGame/getTableFinished')+'?player='+self.options.player.code,
-							success: function(html)
-							{
-								$("div.dm_chess_table").replaceWith(html);
-							}
-						})
+            $.ajax({
+              url: $.dm.ctrl.getHref('+/dmChessGame/getTableFinished')+'?player='+self.options.player.code,
+              success: function(html)
+              {
+                $("div.dm_chess_table").replaceWith(html);
+              }
+            })
             $("div.ui-draggable").draggable("destroy");
             clearTimeout(self.options.beat.timeout);
             clearTimeout(self.title_timeout);
@@ -302,12 +302,12 @@
       var self = this;
       if (self.options.opponent.ai) 
       {
-				if (!self.isMyTurn() && !self.options.game.finished) 
-				{
-					self.aiMove();
-				}
-				
-				return;
+        if (!self.isMyTurn() && !self.options.game.finished)
+        {
+          self.aiMove();
+        }
+
+        return;
       }
       if (self.options.beat.timeout) 
       {
@@ -318,10 +318,10 @@
         self.beat();
       }, self.isMyTurn() ? self.options.beat.delay * 2 : self.options.beat.delay);
     },
-		translate: function(message)
-		{
-			return this.options.i18n[message] || message;
-		},
+    translate: function(message)
+    {
+      return this.options.i18n[message] || message;
+    },
     inArray: function(needle, haystack)
     {
       for (var i in haystack)
