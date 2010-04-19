@@ -41,7 +41,6 @@ class dmChessCrafty extends dmConfigurable
     
     if($code !== 0)
     {
-//      dmDebug::kill($command, $return, $code, file($file));
       throw new dmChessCraftyException(sprintf('Can not run crafty: '.$command.' '.$return));
     }
     
@@ -49,7 +48,6 @@ class dmChessCrafty extends dmConfigurable
     
     if(!$forsythe)
     {
-//      dmDebug::kill($command, $return, $code, file($file));
       throw new dmChessCraftyException(sprintf('Can not run crafty: '.$command.' '.$return));
     }
     

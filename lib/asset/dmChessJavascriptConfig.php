@@ -34,8 +34,8 @@ class dmChessJavascriptConfig
       ) : false,
       'targets'   => ($this->player->isMyTurn() && $this->player->Game->isStarted) ? $this->player->getTargetKeysByPieces() : null,
       'beat'      => array(
-        'url'     => $this->helper->link('+/dmChessGame/whatsUp')->param('player', $this->player->code)->getHref(),
-        'delay'   => 2000
+        'url'     => $this->helper->link('@dm_chess_whatsup')->param('player', $this->player->code)->getHref(),
+        'delay'   => 2500
       ),
       'game'      => array(
         'code'    => $this->player->Game->code,
