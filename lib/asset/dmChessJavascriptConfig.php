@@ -36,7 +36,7 @@ class dmChessJavascriptConfig
       'beat'      => array(
         'url'     => $this->helper->link('@dm_chess_whatsup')->param('player', $this->player->code)->getHref(),
         'cache_url' => $this->helper->link('/cache/chess/'.$this->player->code.'.txt')->getHref(),
-        'delay'   => 2000
+        'delay'   => 1500
       ),
       'game'      => array(
         'code'    => $this->player->Game->code,
