@@ -162,24 +162,48 @@
     beat: function()
     {
       var self = this;
+
       if (self.options.game.finished)
       {
         return;
       }
+
+      function refresh()
+      {
+        $.ajax({
+          url: self.options.beat.url,
+          dataType: "json",
+          error: function()
+          {
+            self.restartBeat();
+          },
+          success: function(data)
+          {
+            if (data)
+            {
+              self.updateFromJson(data);
+            }
+            self.restartBeat();
+          }
+        });
+      }
+
       $.ajax({
-        url: self.options.beat.url,
-        dataType: "json",
+        url: self.options.beat.cache_url,
         error: function()
         {
-          self.restartBeat();
+          refresh();
         },
-        success: function(data)
+        success: function(mustRefresh)
         {
-          if (data)
+          if(0 != mustRefresh)
           {
-            self.updateFromJson(data);
+            refresh();
           }
-          self.restartBeat();
+          else
+          {
+            self.restartBeat();
+          }
         }
       });
     },

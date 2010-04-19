@@ -117,6 +117,7 @@ LIMIT 1', array($playerCode, $playerCode))
     
     if(empty($opponentEvents))
     {
+      $this->getService('dm_chess_ajax_cache')->setPlayerCodeEventCache($playerCode, false);
       return $this->renderJson(null);
     }
     

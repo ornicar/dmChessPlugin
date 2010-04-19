@@ -154,6 +154,8 @@ abstract class PluginDmChessGame extends BaseDmChessGame
   public function start()
   {
     $this->isStarted = true;
+
+    $this->getEventDispatcher()->notify(new dmChessEvent($this, 'dm.chess.game_start'));
     
     return $this;
   }

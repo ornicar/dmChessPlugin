@@ -216,6 +216,8 @@ abstract class PluginDmChessPlayer extends BaseDmChessPlayer
   public function clearEvents()
   {
     $this->_set('events', null, false);
+
+    $this->getEventDispatcher()->notify(new dmChessEvent($this, 'dm.chess.player_clear_events'));
     
     return $this;
   }
@@ -336,7 +338,7 @@ abstract class PluginDmChessPlayer extends BaseDmChessPlayer
   
   protected function getDefaultAiLevel()
   {
-    return 3;
+    return 1;
   }
   
   protected function createPiece($type, $x)
