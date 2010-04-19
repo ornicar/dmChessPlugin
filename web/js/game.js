@@ -162,8 +162,10 @@
     beat: function()
     {
       var self = this;
-      if (self.options.game.finished) 
+      if (self.options.game.finished)
+      {
         return;
+      }
       $.ajax({
         url: self.options.beat.url,
         dataType: "json",
@@ -332,10 +334,6 @@
       }
       return false;
     }
-  });
-  
-  $.extend($.cheek.game, {
-    getter: "getBoard getTable"
   });
   
 })(jQuery);
