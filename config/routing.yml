@@ -1,0 +1,3 @@
+dm_chess_whatsup:
+  url:          /chess/ping/:player
+  params:       { module: dmChessGame, action: whatsUp }
