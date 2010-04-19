@@ -191,6 +191,9 @@ abstract class PluginDmChessPlayer extends BaseDmChessPlayer
   public function setEvents($events)
   {
     $this->_set('events', json_encode($events), false);
+
+    $this->getEventDispatcher()->notify(new dmChessEvent($this, 'dm.chess.player_set_events'));
+    
     return $this;
   }
   

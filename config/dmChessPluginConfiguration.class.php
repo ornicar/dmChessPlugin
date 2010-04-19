@@ -15,12 +15,12 @@ class dmChessPluginConfiguration extends sfPluginConfiguration
   
   public function listenToContextLoadedEvent(sfEvent $e)
   {
-    $this->eventLog = $e->getSubject()->get('event_log');
-    
-    $this->eventLog->setOption('ignore_models', array_merge($this->eventLog->getOption('ignore_models'), array(
+    $e->getSubject()->get('event_log')->setOption('ignore_models', array_merge($this->eventLog->getOption('ignore_models'), array(
       'DmChessGame',
       'DmChessPlayer'
     )));
+
+    $e->getSubject()->get('dm_chess_ajax_cache')->connect();
     
     $this->dispatcher->connect('dm.chess.piece_move', array($this, 'listenToPieceMoveEvent'));
     

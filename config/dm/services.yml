@@ -5,6 +5,8 @@ parameters:
     square_class:             dmChessSquare
 
   dm_chess_event_log.class:   dmChessEventLog
+
+  dm_chess_ajax_cache.class:  dmChessAjaxCache
   
   dm_chess_asset_loader.class: dmChessAssetLoader
   
@@ -48,6 +50,11 @@ services:
 
   dm_chess_event_log:
     class:                    %dm_chess_event_log.class%
+    shared:                   true
+    arguments:                [ @dispatcher ]
+
+  dm_chess_ajax_cache:
+    class:                    %dm_chess_ajax_cache.class%
     shared:                   true
     arguments:                [ @dispatcher ]
 
