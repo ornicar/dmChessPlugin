@@ -9,7 +9,7 @@ if ($player->isBlack())
 
 $x = $y = 1;
 
-echo £o('div.dm_chess_board');
+echo _open('div.dm_chess_board');
 
 foreach($squares as $key => $square)
 {
@@ -22,13 +22,11 @@ foreach($squares as $key => $square)
     $squareCss .= '.check';
   }
   
-  echo £('div'.$squareCss, array('style' => sprintf('top: %dpx;left: %dpx;', 64*(8-$x), 64*($y-1))),
+  echo _tag('div'.$squareCss, array('style' => sprintf('top: %dpx;left: %dpx;', 64*(8-$x), 64*($y-1))),
   
-    £('div.dm_chess_square_inner', '').
+    _tag('div.dm_chess_square_inner', '').
     
-    ($piece ? £('div.dm_chess_piece.'.$piece->get('type').'.'.$piece->get('color').'#p'.$piece->get('id')) : '')
-    
-//    £('span.human_pos', $square->getHumanPos())
+    ($piece ? _tag('div.dm_chess_piece.'.$piece->get('type').'.'.$piece->get('color').'#p'.$piece->get('id')) : '')
   
   );
   
@@ -38,4 +36,4 @@ foreach($squares as $key => $square)
   }
 }
 
-echo £c('div');
+echo _close('div');

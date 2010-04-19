@@ -1,9 +1,9 @@
 <?php
 
-echo £('div.dm_chess_not_created.clearfix',
+echo _tag('div.dm_chess_not_created.clearfix',
 
-  £('noscript', __('Your browser does not support JavaScript.')).
+  _tag('noscript', __('Your browser does not support JavaScript.')).
 
-  £('div.yescript', __('Creating a new game...'))
+  _tag('div.yescript', __('Creating a new game...'))
   
 );

@@ -97,7 +97,7 @@ class dmChessGameActions extends myFrontModuleActions
     
     dmDb::table('DmChessPlayer')->joinGameByCode($player->Game->code, array('is_ai' => true));
     
-    return $this->redirect($this->getHelper()->£link($this->getPage())->param('p', $player->code)->getHref());
+    return $this->redirect($this->getHelper()->link($this->getPage())->param('p', $player->code)->getHref());
   }
   
   /*
@@ -153,7 +153,7 @@ LIMIT 1', array($playerCode, $playerCode))
     {
       $this->forward404Unless($player = dmDb::table('DmChessPlayer')->joinGameByCode($gameCode));
       
-      return $this->redirect($this->getHelper()->£link($this->getPage())->param('p', $player->code)->getHref());
+      return $this->redirect($this->getHelper()->link($this->getPage())->param('p', $player->code)->getHref());
     }
     else
     {
@@ -173,7 +173,7 @@ LIMIT 1', array($playerCode, $playerCode))
     // clean old games
     dmDb::table('DmChessGame')->broom();
 
-    return $this->redirect($this->getHelper()->£link($this->getPage())->param('p', dmDb::table('DmChessPlayer')->startNewGame()->code)->getHref());
+    return $this->redirect($this->getHelper()->link($this->getPage())->param('p', dmDb::table('DmChessPlayer')->startNewGame()->code)->getHref());
   }
   
   public function executeGetTableFinished(dmWebRequest $request)

@@ -13,11 +13,11 @@ elseif(isset($notCreated))
   return;
 }
 
-echo £('div.dm_chess_game.clearfix',
+echo _tag('div.dm_chess_game.clearfix',
 
-  £('div.dm_chess_board_wrap', get_partial('dmChessGame/board', array('player' => $player))).
+  _tag('div.dm_chess_board_wrap', get_partial('dmChessGame/board', array('player' => $player))).
   
-  £('div.dm_chess_table_wrap',
+  _tag('div.dm_chess_table_wrap',
   
     get_partial('dmChessGame/cemetery', array('player' => $player, 'position' => 'top')).
     

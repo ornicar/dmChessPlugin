@@ -1,24 +1,24 @@
 <?php
 
-echo £('div.dm_chess_table.finished',
+echo _tag('div.dm_chess_table.finished',
 
-  £('p.game_over', __('Game over')).
+  _tag('p.game_over', __('Game over')).
   
-  £('div.dm_chess_separator').
+  _tag('div.dm_chess_separator').
   
   (($winner = $player->Game->Winner)
   ? 
-    £('div.dm_chess_current_player',
-      £('div.player.clearfix',
-        £('div.dm_chess_piece.king.fleft.'.$winner->color, '').
-        £('p', __('%1% is victorious', array('%1%' => $winner->color)))
+    _tag('div.dm_chess_current_player',
+      _tag('div.player.clearfix',
+        _tag('div.dm_chess_piece.king.fleft.'.$winner->color, '').
+        _tag('p', __('%1% is victorious', array('%1%' => $winner->color)))
       )
     )
   : ___('Draw')
   ).
   
-  £('div.dm_chess_separator').
+  _tag('div.dm_chess_separator').
   
-  £link($dm_page)->text(__('Start a new game'))->currentSpan(false)
+  _link($dm_page)->text(__('Start a new game'))->currentSpan(false)
 
 );
