@@ -8,7 +8,7 @@ class dmChessJavascriptConfig
   $i18n,
   $player;
   
-  public function __construct(dmWebResponse $response, dmHelper $helper, dmi18n $i18n, DmChessPlayer $player)
+  public function __construct(dmWebResponse $response, dmHelper $helper, dmI18n $i18n, DmChessPlayer $player)
   {
     $this->response = $response;
     $this->helper   = $helper;
