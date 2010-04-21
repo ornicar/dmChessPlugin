@@ -99,3 +99,21 @@ div.dm_chess_cemetery div.dm_chess_piece {
 div.dm_chess_not_created .yescript {
   display: none;
 }
+
+div.dm_chess_game_is_full {
+  -moz-border-radius:4px 4px 4px 4px;
+  background:none repeat scroll 0 0 #F8F8F8;
+  border:1px solid #D4D4D4;
+  font:12px 'Lucida Grande','Lucida Sans Unicode',Geneva,Verdana,Sans-Serif;
+  width:472px;
+  padding:20px;
+  text-align: center;
+}
+
+div.dm_chess_game_is_full p {
+  margin: 1em;
+}
+
+div.dm_chess_game_is_full a {
+  font-size: 150%;
+}
