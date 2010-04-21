@@ -152,9 +152,14 @@ LIMIT 1', array($playerCode, $playerCode))
     }
     elseif($gameCode = $request->getParameter('g', $request->getParameter('game')))
     {
-      $this->forward404Unless($player = dmDb::table('DmChessPlayer')->joinGameByCode($gameCode));
-      
-      return $this->redirect($this->getHelper()->link($this->getPage())->param('p', $player->code)->getHref());
+      if($player = dmDb::table('DmChessPlayer')->joinGameByCode($gameCode))
+      {
+        return $this->redirect($this->getHelper()->link($this->getPage())->param('p', $player->code)->getHref());
+      }
+      else
+      {
+        $request->setParameter('dm_chess_full_game', 1);
+      }
     }
     else
     {

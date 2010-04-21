@@ -1,6 +1,12 @@
 <?php
 
-if(isset($justInstalled))
+if(isset($gameIsFull))
+{
+  // Someone tries to join a game that already has 2 players
+  include_partial('dmChessGame/gameIsFull');
+  return;
+}
+elseif(isset($justInstalled))
 {
   // The widget has just been dropped, page needs to be reloaded
   include_partial('dmChessGame/justInstalled');

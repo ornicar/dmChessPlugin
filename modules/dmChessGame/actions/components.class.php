@@ -9,7 +9,11 @@ class dmChessGameComponents extends myFrontModuleComponents
 
   public function executePlay(dmWebRequest $request)
   {
-    if(!$this->getServiceContainer()->hasParameter('dm_chess.player'))
+    if($request->getParameter('dm_chess_full_game'))
+    {
+      $this->gameIsFull = true;
+    }
+    elseif(!$this->getServiceContainer()->hasParameter('dm_chess.player'))
     {
       $this->justInstalled = true;
     }
