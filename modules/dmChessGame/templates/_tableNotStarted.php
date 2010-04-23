@@ -1,6 +1,6 @@
 <?php
 
-echo _tag('div.dm_chess_table',
+echo _tag('div.dm_chess_table.dm_chess_table_not_started',
 
   __('To invite someone to play, give this url:').
     

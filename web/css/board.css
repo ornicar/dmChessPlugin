@@ -1,5 +1,5 @@
 div.dm_chess_board_wrap {
-	float: left;
+  float: left;
   border: 1px solid #D3D3D3;
   width: 512px;
   height: 512px;
@@ -47,7 +47,7 @@ div.dm_chess_square.droppable-hover div.dm_chess_square_inner {
 }
 
 div.dm_chess_square span.human_pos {
-	position: absolute;
+  position: absolute;
   margin: 0 0 0 2px;
   font-size: 10px;
 }
@@ -71,7 +71,7 @@ div.dm_chess_piece {
 
 div.dm_chess_piece.ui-draggable-dragging,
 div.dm_chess_piece.moving {
-	opacity: 0.5;
+  opacity: 0.5;
 }
 
 div.dm_chess_piece.pawn.white{

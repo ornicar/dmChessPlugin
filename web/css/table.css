@@ -3,7 +3,7 @@ div.dm_chess_opponent {
 }
 
 div.dm_chess_table {
-	height: 216px;
+  height: 216px;
   overflow: hidden;
   background: #F8F8F8;
   padding: 10px;
@@ -14,24 +14,24 @@ div.dm_chess_table {
 }
 
 div.dm_chess_join_url {
-	background: #FFFFFF;
-	border: 1px solid #D4D4D4;
-	margin: 24px 0;
-	padding: 10px;
+  background: #FFFFFF;
+  border: 1px solid #D4D4D4;
+  margin: 24px 0;
+  padding: 10px;
 }
 
 div.dm_chess_separator {
-	border-bottom: 1px solid #D4D4D4;
+  border-bottom: 1px solid #D4D4D4;
   margin: 10px 0;
 }
 
 div.dm_chess_permalink a.link {
-	white-space: nowrap;
-	display: block;
+  white-space: nowrap;
+  display: block;
 }
 
 div.dm_chess_give_up {
-	margin-top: 20px;
+  margin-top: 20px;
   text-align: right;
 }
 div.dm_chess_give_up a.link {
@@ -83,7 +83,7 @@ div.dm_chess_cemetery_bottom {
 }
 
 div.dm_chess_cemetery li {
-	display: block;
+  display: block;
   list-style: none;
   float: left;
   margin-right: -24px;
