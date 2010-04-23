@@ -46,7 +46,7 @@ generator:
           - events
       form:
         display:
-          NONE: [is_creator, is_winner, is_ai, game_id]
+          NONE: [is_creator, is_winner, is_ai]
           Others: [code, ai_level, color, events]
         class: DmChessPlayerAdminForm
         fields: {  }

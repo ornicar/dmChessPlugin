@@ -19,6 +19,6 @@ echo _tag('div.dm_chess_table.finished',
   
   _tag('div.dm_chess_separator').
   
-  _link($dm_page)->text(__('Start a new game'))->currentSpan(false)
+  _link($dm_page)->text(__('Start a new game'))->currentSpan(false)->title(false)
 
 );
