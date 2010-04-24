@@ -19,7 +19,7 @@ elseif(isset($notCreated))
   return;
 }
 
-echo _tag('div.dm_chess_game.clearfix',
+echo _tag('div.dm_chess_game.clearfix.dm_chess_player_'.$player->getColor(),
 
   _tag('div.dm_chess_board_wrap', get_partial('dmChessGame/board', array('player' => $player))).
   
