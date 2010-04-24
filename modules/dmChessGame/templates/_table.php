@@ -21,15 +21,22 @@ echo _tag('div.dm_chess_table',
     )
   ).
   
-  _tag('div.dm_chess_separator').
-  
-  _tag('div.dm_chess_permalink',
-    __('To continue later, use this url:').
-    _link($sf_request->getUri())->text($sf_request->getUri())->set('mt10')
+  _tag('div.dm_chess_table_controls.clearfix',
+
+    _tag('a.dm_chess_permalink_toggle',
+      __('Save')
+    ).
+
+    _link('+/dmChessGame/resign')
+    ->param('player', $player->code)
+    ->text(__('Resign'))
+    ->title(__('Resign this game'))
+    ->set('.dm_chess_give_up')
   ).
-  
-  _tag('div.dm_chess_give_up',
-    _link('+/dmChessGame/resign')->param('player', $player->code)->text(__('Resign'))->title(__('Resign this game'))
+
+  _tag('div.dm_chess_permalink.none',
+    __('To continue later, use this url:').
+    _tag('span', $sf_request->getUri())
   )
 
 );

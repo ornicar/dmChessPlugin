@@ -4,6 +4,7 @@
   
     _init: function()
     {
+
       var self = this;
       self.title_timeout = null;
       self.pieceMoving = false
@@ -91,7 +92,7 @@
       
       self.restartBeat();
       
-      self.$table.find("div.dm_chess_give_up a").click(function()
+      self.$table.find("a.dm_chess_give_up").click(function()
       {
         if (confirm($(this).attr('title')+' ?')) 
         {
@@ -106,6 +107,11 @@
         }
 
         return false;
+      });
+
+      self.$table.find("a.dm_chess_permalink_toggle").click(function()
+      {
+        self.$table.find('div.dm_chess_permalink').toggle(100);
       });
 
       self.$table.find("select#dm_chess_level_select").change(function()
