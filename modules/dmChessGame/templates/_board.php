@@ -36,4 +36,13 @@ foreach($squares as $key => $square)
   }
 }
 
+if(!$player->Game->isStarted)
+{
+  echo _link('+/dmChessGame/changePosition')
+  ->param('player', $player->code)
+  ->set('a.dm_chess_exchange_position')
+  ->title(__('Change position'))
+  ->text('');
+}
+
 echo _close('div');

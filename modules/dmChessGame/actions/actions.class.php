@@ -69,6 +69,18 @@ class dmChessGameActions extends myFrontModuleActions
     
     return $this->renderText('ok');
   }
+
+  public function executeChangePosition(dmWebRequest $request)
+  {
+    $this->forward404Unless(
+      ($player  = $this->compilePlayer(dmDb::table('DmChessPlayer')->findOneByCode($request->getParameter('player')))) &&
+      (!$player->Opponent)
+    );
+
+    $player->exchangePosition();
+
+    $this->redirect($this->getHelper()->link($this->getPage())->param('p', $player->code)->getHref());
+  }
   
   public function executeResign(dmWebRequest $request)
   {

@@ -111,3 +111,18 @@ div.dm_chess_piece.queen.black{
 div.dm_chess_piece.king.black{
   background-position: -320px +64px;
 }
+
+a.dm_chess_exchange_position {
+  background: url(../images/exchange.png) top left no-repeat;
+  width: 128px;
+  height: 128px;
+  display: block;
+  position: absolute;
+  top: 191px;
+  left: 191px;
+  cursor: pointer;
+}
+
+a.dm_chess_exchange_position:hover {
+  background-position: 0 -128px;
+}
